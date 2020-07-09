@@ -1,0 +1,45 @@
+/*
+MAIN HEADER
+*/
+.main_header{
+    max-width: 1600px;
+    background: var(--themeColorA);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.main_header_logo{
+    color: #fff;
+    font-size: 3em;
+    margin: 0 auto;
+}
+/* 
+MAIN CONTENT
+*/
+.main_content{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1600px;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+.main_content_result{
+    flex-basis: 48%;
+}
+.main_content_result header h1{
+    font-size: 1.5em;
+}
+.main_content_insert{
+    flex-basis: 48%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main_content_insert header h1{
+    flex-basis: 100%;
+    font-size: 1.5em;
+}
+.main_content_insert_form{
+    flex-basis: 50%;
+    margin: 0 auto;
+}
