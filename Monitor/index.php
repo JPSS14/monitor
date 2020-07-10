@@ -22,16 +22,14 @@ include("Classes/ListaExercicios.php");
                 <h1>Resultados</h1>
             </header>
             <?php
-                $c = new Conection();
-                $c->conect();
-                $cx = $c->conect();
-                $li = new ListaExercicio();
-                $li->returnAllSeries($cx);
-                for ($row_no = 0; $row_no > $li->num_rows; $row_no++) {
-                    $res->data_seek($row_no);
-                    $row = $res->fetch_assoc();
-                    echo " Nome = " . $row['nome'] . "\n";
-                }
+            $c = new Conection();
+            $c->conect();
+            $cx = $c->conect();
+            $li = new ListaExercicio();
+            $tr = $li->returnAllSeries($cx);
+            while ($linha = mysqli_fetch_assoc($tr)) {
+                echo utf8_encode(" ".$linha["id_exercicio"] ." ". $linha["dia"] ." ". $linha["quantidade"]);
+            }
             ?>
         </aricle>
         <article class="main_content_insert">

@@ -25,7 +25,7 @@ class ListaExercicio{
 
     public function returnAllSeries($cx){
         $connection = $cx;
-        $select = "SELECT * FROM exercicio";
+        $select = "SELECT * FROM lista_exercicios";
         $result = mysqli_query($connection, $select);
         
         if(!$result){
