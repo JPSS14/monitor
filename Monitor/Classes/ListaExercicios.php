@@ -22,4 +22,16 @@ class ListaExercicio{
     public function setExercicio($idExercicio){
         $this->idExercicio = $idExercicio;
     }
+
+    public function returnAllSeries($cx){
+        $connection = $cx;
+        $select = "SELECT * FROM exercicio";
+        $result = mysqli_query($connection, $select);
+        
+        if(!$result){
+            die("Erro no banco lista_exercicio");
+        }
+
+        return $result;
+    }
 }
