@@ -24,22 +24,31 @@ MAIN CONTENT
     margin-top: 20px;
     justify-content: space-around;
 }
+/* RESULT */
 .main_content_result{
     flex-basis: 48%;
 }
 .main_content_result header h1{
     font-size: 1.5em;
 }
+/* INSERT */
 .main_content_insert{
     flex-basis: 48%;
     display: flex;
     flex-wrap: wrap;
 }
-.main_content_insert header h1{
+.main_content_insert header{
     flex-basis: 100%;
     font-size: 1.5em;
 }
 .main_content_insert_form{
     flex-basis: 50%;
-    margin: 0 auto;
+    margin: 20px auto;
+}
+.main_content_insert_form input,
+.main_content_insert_form select{
+    width: 100%;
+    margin: 10px auto;
+    padding: 3px;
+    font-size: 1.3em;
 }

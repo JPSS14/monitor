@@ -28,7 +28,7 @@ include("Classes/ListaExercicios.php");
             $li = new ListaExercicio();
             $tr = $li->returnAllSeriesR($cx);
             while ($linha = mysqli_fetch_assoc($tr)) {
-                echo utf8_encode(" ".$linha["nome"]." ".$linha["regiao"]." ". $linha["dia"] ." ". $linha["quantidade"]);
+                echo utf8_encode(" " . $linha["nome"] . " " . $linha["regiao"] . " " . $linha["dia"] . " " . $linha["quantidade"]);
             }
             ?>
         </aricle>
@@ -37,7 +37,15 @@ include("Classes/ListaExercicios.php");
                 <h1>Inserir nova série</h1>
             </header>
             <form class="main_content_insert_form" method="post" action="insert.php">
-                <input type="text" title="name" placeholder="Nome">
+                <input type="date" name="dia">
+                <select name="regiao">
+                    <option value="1">Superior</option>
+                    <option value="2">Inferior</option>
+                    <option value="3">Core</option>
+                </select>
+                <input type="text" name="name" placeholder="Nome">
+                <input type="number" name="quantidade" placeholder="Quantidade">
+                <input type="submit" value="Cadastrar Serie">
             </form>
         </article>
     </main>
