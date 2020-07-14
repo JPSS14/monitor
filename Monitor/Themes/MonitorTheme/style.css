@@ -31,6 +31,13 @@ MAIN CONTENT
 .main_content_result header h1{
     font-size: 1.5em;
 }
+.main_content_result_p{
+    font-size: 1.2em;
+    background: var(--themeColorA);
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+}
 /* INSERT */
 .main_content_insert{
     flex-basis: 48%;

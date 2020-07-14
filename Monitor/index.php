@@ -28,7 +28,7 @@ include("Classes/ListaExercicios.php");
             $li = new ListaExercicio();
             $tr = $li->returnAllSeriesR($cx);
             while ($linha = mysqli_fetch_assoc($tr)) {
-                echo utf8_encode(" " . $linha["nome"] . " " . $linha["regiao"] . " " . $linha["dia"] . " " . $linha["quantidade"]);
+                echo utf8_encode("<p class='main_content_result_p'> " . $linha["nome"] . " " . $linha["regiao"] . " " . $linha["dia"] . " " . $linha["quantidade"] . "</p>");
             }
             ?>
         </aricle>
