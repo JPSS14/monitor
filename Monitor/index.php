@@ -13,9 +13,9 @@ include("Classes/ListaExercicios.php");
 </head>
 
 <body>
-    <header class="main_header">
-        <h1 class="main_header_logo">Monitor</h1>
-    </header>
+    <?php
+    require "Themes/MonitorTheme/header.php";
+    ?>
     <main class="main_content">
         <aricle class="main_content_result">
             <header>
@@ -38,17 +38,41 @@ include("Classes/ListaExercicios.php");
             </header>
             <form class="main_content_insert_form" method="post" action="insert.php">
                 <input type="date" name="dia">
-                <select name="regiao">
-                    <option value="1">Superior</option>
-                    <option value="2">Inferior</option>
-                    <option value="3">Core</option>
+                <select name="regiao" id="regiao">
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="Superior">Superior</option>
+                    <option value="Inferior">Inferior</option>
+                    <option value="Core">Core</option>
                 </select>
-                <input type="text" name="name" placeholder="Nome">
+                <select name="exercicio" id="exercicio">
+                    <option value="" disabled selected>Selecione...</option>
+                </select>
                 <input type="number" name="quantidade" placeholder="Quantidade">
                 <input type="submit" value="Cadastrar Serie">
             </form>
         </article>
     </main>
+
+    <script src="Assets/jquery.js"></script>
+    <script>
+        $('#regiao').change(function(e) {
+            var regiao = $(this).val();
+            console.log(regiao);
+            $.ajax({
+                type: "GET",
+                data: "regiao=" + regiao,
+                url: "http://localhost/Monitor/Assets/Functions/RetornarExercicios.php",
+                async: false
+            }).done(function(data) {
+                var exercicio = "";
+                exercicio += '<option value="" disabled selected>Selecione...</option>';
+                $.each($.parseJSON(data), function(chave, valor) {
+                    exercicio += '<option value="' + valor.id_exercicio + '">' + valor.nome + '</option>';
+                });
+                $('#exercicio').html(exercicio);
+            })
+        });
+    </script>
 </body>
 
 </html>
