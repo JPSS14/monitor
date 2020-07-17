@@ -1,28 +1,28 @@
 <?php
 class ListaExercicio{
-    private $dia;
-    private $quantidade;
-    private $idExercicio;
+    private $day;
+    private $quantity;
+    private $idExercise;
     
-    public function getDia(){
-        return $this->dia;
+    public function getDay(){
+        return $this->day;
     }
-    public function setDia($dia){
-        $this->dia = $dia;
+    public function setDay($day){
+        $this->day = $day;
     }
-    public function getQuantidade(){
-        return $this->quantidade;
+    public function getQuantity(){
+        return $this->quantity;
     }
-    public function setQuantidade($quantidade){
-        $this->quantidade = $quantidade;
+    public function setQuantity($quantity){
+        $this->quantity = $quantity;
     }
-    public function getIdExercicio(){
-        return $this->idExercicio;
+    public function getIdExercise(){
+        return $this->idExercise;
     }
-    public function setExercicio($idExercicio){
-        $this->idExercicio = $idExercicio;
+    public function setExercise($idExercise){
+        $this->idExercise = $idExercise;
     }
-
+    // LIST ALL SERIES
     public function returnAllSeries($cx){
         $connection = $cx;
         $select = "SELECT * FROM lista_exercicios";
@@ -34,6 +34,7 @@ class ListaExercicio{
         return $result;
     }
 
+    // LIST ALL SERIES ESPECIFCS
     public function returnAllSeriesR($cx){
         $connection = $cx;
 
@@ -55,6 +56,53 @@ class ListaExercicio{
         $select = "SELECT * FROM relatorio";
         $result = mysqli_query($connection, $select);
         
+        return $result;
+    }
+
+    // ADD SERIES
+    public function addSerie($cx){
+        $connection = $cx;
+        $add = "INSERT INTO lista_exercicios (idexercicio, dia, quantidade) ";
+        $add .= "VALUES ('{$this->getIdExercise()}','{$this->getDay()}',{$this->getQuantity()})";
+
+        $result = mysqli_query($connection, $add);
+
+        if(!$result){
+            die("Erro no banco lista_exercicios no método addSerie");
+        }
+        return $result;
+    }
+
+    // UPDATE SERIES
+    public function updateSeries($cx, $idSerieP){
+        $connection = $cx;
+        $idSerie = $idSerieP;
+        $update = "UPDATE lista_exercicios SET ";
+        $update .= "dia = '{$this->getDay()}', ";
+        $update .= "id_exercicio = {$this->getIdExercise()}, ";
+        $update .= "quantidade = {$this->getQuantity()} ";
+        $update .= "WHERE id = {$idSerie}";
+
+        $result = mysqli_query($connection, $update);
+
+        if(!$result){
+            die("Erro no banco lista_exercicios no método updateSeries");
+        }
+        return $result;
+    }
+
+    // DELETE SERIES
+    public function deleteSeries($cx, $idSerieP){
+        $connection = $cx;
+        $idSerie = $idSerieP;
+        $delete = "DELETE FROM lista_exercicios ";
+        $delete .= "WHERE id = {$idSerie}";
+
+        $result = mysqli_query($connection, $delete);
+
+        if(!$result){
+            die("Erro no banco lista_exercicios no método deleteSeries");
+        }
         return $result;
     }
 
