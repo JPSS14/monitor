@@ -19,7 +19,7 @@ class ListaExercicio{
     public function getIdExercise(){
         return $this->idExercise;
     }
-    public function setExercise($idExercise){
+    public function setIdExercise($idExercise){
         $this->idExercise = $idExercise;
     }
     // LIST ALL SERIES
@@ -60,9 +60,9 @@ class ListaExercicio{
     }
 
     // ADD SERIES
-    public function addSerie($cx){
+    public function addSeries($cx){
         $connection = $cx;
-        $add = "INSERT INTO lista_exercicios (idexercicio, dia, quantidade) ";
+        $add = "INSERT INTO lista_exercicios (id_exercicio, dia, quantidade) ";
         $add .= "VALUES ('{$this->getIdExercise()}','{$this->getDay()}',{$this->getQuantity()})";
 
         $result = mysqli_query($connection, $add);
