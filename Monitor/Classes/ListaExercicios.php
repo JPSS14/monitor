@@ -106,4 +106,30 @@ class ListaExercicio{
         return $result;
     }
 
+    // LIST FILTER SERIES
+    public function filterSeries($cx){
+        $connection = $cx;
+
+        $select = "DROP VIEW IF EXISTS relatorio";
+        $result = mysqli_query($connection, $select);
+        if(!$result){
+            die("Erro no banco 1");
+        }
+        $select = "CREATE VIEW relatorio AS ";
+        $select .= "SELECT e.id_exercicio, le.dia, le.quantidade, e.nome, e.regiao ";
+        $select .= "FROM exercicio AS e ";
+        $select .= "RIGHT JOIN lista_exercicios AS le ON e.id_exercicio = le.id_exercicio ";
+        $select .= "WHERE id_exercicio={$this->getIdExercise()} AND dia='{$this->getDay()}'";
+
+        $result = mysqli_query($connection, $select);
+        if(!$result){
+            die("Erro no banco no método filterSeries");
+        }
+
+        $select = "SELECT * FROM relatorio";
+        $result = mysqli_query($connection, $select);
+        
+        return $result;
+    }
+
 }
